@@ -12,10 +12,11 @@ body {
     justify-content: center;
     align-items: center;
     min-height: 100vh;
-    background: url('../img/fundologin.webp');
+    background-color: #1f1e1e;
     background-repeat: no-repeat;
     background-size: cover;
     background-position: center;
+   
 }
 
 .wrapper {
@@ -36,6 +37,14 @@ body {
     width: 100%;
     height: 50px;
     margin: 30px 0;
+}
+
+.logo img{
+    max-width:800px;
+    max-height:300px;
+    width: auto;
+    height: auto;
+    margin-right: 150px;
 }
 
 .input-box input {
@@ -113,3 +122,4 @@ body {
 .register-link p a:hover {
     text-decoration: underline;
 }
+
