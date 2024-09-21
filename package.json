@@ -4,7 +4,8 @@
   "description": "Projeto para um portal web que converte arquivos",
   "main": "app.js",
   "scripts": {
-    "test": "echo \"Error: no test specified\" && exit 1"
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "start": "nodemon ./app.js"
   },
   "author": "Raphael Lima e João Ramos",
   "license": "ISC",
