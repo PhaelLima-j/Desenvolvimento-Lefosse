@@ -1,7 +1,10 @@
+require('dotenv').config();
+
 const express = require('express')
 const path = require('path');
 
 const routerPrincipal = require('./routes/principal');
+const { connect } = require('./models')
 
 const app = express();
 const porta = 3000;
@@ -17,5 +20,7 @@ app.use(express.static('public'));
 app.use('/login', routerPrincipal);
 
 app.listen(porta, () => {
+    connect();
+
     console.log('Servidor ouvindo na porta ' + porta);
 });
