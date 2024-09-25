@@ -10,6 +10,8 @@ require('./routes/oauth/')
 const routerAuth = require('./routes/auth');
 const routerHome = require('./routes/home');
 
+const { checaAutenticado } = require('./routes/middlewares/checa-autenticacao');
+
 const { connect } = require('./models')
 
 const app = express();
@@ -37,7 +39,7 @@ app.use(express.static('public'));
 
 // routers
 app.use('/login', routerAuth);
-app.use('/home', routerHome);
+app.use('/home', checaAutenticado, routerHome);
 
 // caso nao de match em nenhuma rota, tratamos o 404
 app.use((_req, _res, next) => {
