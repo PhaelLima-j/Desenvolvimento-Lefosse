@@ -3,17 +3,30 @@ require('dotenv').config();
 const express = require('express')
 const path = require('path');
 const createError = require('http-errors');
+const session = require('express-session');
+const passport = require('passport');
 
-const routerPrincipal = require('./routes/principal');
-const autenticacaoRouter = require('./routes/autenticação');
-
-// importando middlewares
-const { checaAutenticacao } = require('./routes/middlewares/checa-autenticacao')
+require('./routes/oauth/')
+const routerAuth = require('./routes/auth');
+const routerHome = require('./routes/home');
 
 const { connect } = require('./models')
 
 const app = express();
 const porta = 3000;
+
+// configurando a leitura do corpo
+app.use(express.urlencoded({ extended: false }));
+app.use(express.json())
+app.use(session({
+    secret: process.env.SESSION_SECRET,
+    resave: false,
+    saveUnintialized: false
+}))
+
+// configurando autenticacao
+app.use(passport.initialize());
+app.use(passport.session());
 
 // configurando ejs
 app.set('views', path.join(__dirname, 'views'));
@@ -23,8 +36,8 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // routers
-app.use('/logi', routerPrincipal, checaAutenticacao);
-app.use('/autenticacao', autenticacaoRouter, checaAutenticacao);
+app.use('/login', routerAuth);
+app.use('/home', routerHome);
 
 // caso nao de match em nenhuma rota, tratamos o 404
 app.use((_req, _res, next) => {
