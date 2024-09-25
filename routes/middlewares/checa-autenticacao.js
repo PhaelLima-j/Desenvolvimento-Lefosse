@@ -1,6 +1,4 @@
 
-const { Usuario } = require ('../../models');
-
 const checaAutenticado =  (req, res, next) => {
     if(req.isAuthenticated()) {
         return next();

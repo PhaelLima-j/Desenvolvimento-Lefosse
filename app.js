@@ -19,11 +19,11 @@ const porta = 3000;
 
 // configurando a leitura do corpo
 app.use(express.urlencoded({ extended: false }));
-app.use(express.json())
+app.use(express.json());
 app.use(session({
     secret: process.env.SESSION_SECRET,
     resave: false,
-    saveUnintialized: false
+    saveUninitialized: false
 }))
 
 // configurando autenticacao
@@ -38,8 +38,8 @@ app.set('view engine', 'ejs');
 app.use(express.static('public'));
 
 // routers
-app.use('/login', routerAuth);
-app.use('/home', checaAutenticado, routerHome);
+app.use('/auth', routerAuth);
+app.use('/', checaAutenticado, routerHome);
 
 // caso nao de match em nenhuma rota, tratamos o 404
 app.use((_req, _res, next) => {

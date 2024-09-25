@@ -5,10 +5,10 @@ const { checaAutenticado, checaNaoAutenticado } = require('./middlewares/checa-a
 const router = express.Router();
 
 router.get('/', checaNaoAutenticado, (req, res) => {
-    res.render('paginas/login/index') // {error: req.query.erroNoLogin });
+    res.render('paginas/login', { error: req.query.erroNoLogin });
 });
 
-router.get('/logout', checaAutenticado, async (req, res) => {
+router.get('/logout', checaAutenticado, async (req, res, next) => {
     req.logout(req.user, (err) => {
         if (!err) {
             return res.redirect('/auth');
@@ -20,7 +20,7 @@ router.get('/logout', checaAutenticado, async (req, res) => {
 
 router.post('/', passport.authenticate('local', {
     successRedirect: '/',
-    failureRedirect: '/auth'//?erroNoLogin=true
+    failureRedirect: '/auth?erroNoLogin=true'
 }));
 
 

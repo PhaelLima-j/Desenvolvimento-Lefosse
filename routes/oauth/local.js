@@ -8,13 +8,13 @@ passport.use(new LocalStrategy({
     usernameField: 'email'
 }, async (nomeDeUsuario, senha, done) => {
     try {
-        const usuario = await Usuario.findOne({email: nomeDeUsuario });
+        const usuario = await Usuario.findOne({ email: nomeDeUsuario });
 
         if (!usuario) {
             return done(null, false);
         }
 
-        const aSenhaEstaCorreta = await bcrypt.compare(senha.usuario.senha);
+        const aSenhaEstaCorreta = await bcrypt.compare(senha, usuario.senha);
 
         if (aSenhaEstaCorreta) {
             return done(null, usuario);
@@ -35,7 +35,7 @@ passport.deserializeUser(async (id, done) => {
     let err, usuario;
 
     try {
-        usuario = await UserActivation.findById(id);
+        usuario = await Usuario.findById(id);
     } catch (err) {
         err = err;
     }
