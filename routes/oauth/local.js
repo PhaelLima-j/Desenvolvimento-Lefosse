@@ -8,10 +8,10 @@ passport.use(new LocalStrategy({
     usernameField: 'email'
 }, async (nomeDeUsuario, senha, done) => {
     try {
-        const usuario = await Usuario.findOne({ email: nomeDeUsuario });
-
+        const usuario = await Usuario.findOne({ email: nomeDeUsuario }).select('+senha');
+        
         if (!usuario) {
-            return done(null, false);
+            return done(null, false, {message: "Usuário não encontrado "});
         }
 
         const aSenhaEstaCorreta = await bcrypt.compare(senha, usuario.senha);
