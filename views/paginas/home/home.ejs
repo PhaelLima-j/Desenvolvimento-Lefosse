@@ -1,34 +1,37 @@
 <!DOCTYPE html>
-    <html lang="en">
-    <head>
-        <meta charset="UTF-8">
-        <meta name="viewport" content="width=device-width, initial-scale=1.0">
-        <title>Home Page</title>
-        <link rel="stylesheet" href="stylesheets/home/home.css">    
-        <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
-        <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
-        <script src="javascripts/home/home.js" type="text/javascript" defer></script>
-    <body>
- 
-        <header class="header">  
-            <img src="/imagens/logo-lefosse-escuro.png" alt="logo-header">
+<html lang="pt-br">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Home</title>
+    <link rel="stylesheet" href="stylesheets/home/home.css">    
+    <script src="https://unpkg.com/boxicons@2.1.4/dist/boxicons.js"></script>
+    <link href='https://unpkg.com/boxicons@2.1.4/css/boxicons.min.css' rel='stylesheet'>
+    <script src="javascripts/home/home.js" type="text/javascript" defer></script>
+<body>
+
+    <div id="app">
+        <header>
+            <img src="/imagens/logo-lefosse.png" alt="logo-header">
+
+            <ul class="nav">
+                <li>
+                    <a href="#" class="nav-link">Início</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">Ferramentas</a>
+                </li>
+                <li>
+                    <a href="#" class="nav-link">Contato/Suporte</a>
+                </li>
+            </ul>
+
+            <div id ="logoutButton" class="btn-logout">
+                <button onclick="">Logout</button>
+            </div>
         </header>
- 
-        <div class="itens">
-            <section class="btn-itens">
-                <div><p><i class='bx bxs-file'></i></p> Converta facilmente seus arquivos PDF para documentos WORD DOCX simples de editar.
-                    <p><button id="btn-word" onclick="Wordpage()">Converter</button></p>
-                </div>
-                <div><p><i class='bx bxs-file'></i></p> Converta facilmente seus arquivos PDF para documentos WORD DOCX simples de editar.
-                    <p><button id="btn-word" onclick="Wordpage()">Converter</button></p>
-                </div>
-                <div><p><i class='bx bxs-file'></i></p> Converta facilmente seus arquivos PDF para documentos WORD DOCX simples de editar.
-                    <p><button id="btn-word" onclick="Wordpage()">Converter</button></p>
-                </div>
-                <div><p><i class='bx bxs-file'></i></p> Converta facilmente seus arquivos PDF para documentos WORD DOCX simples de editar.
-                    <p><button id="btn-word" onclick="Wordpage()">Converter</button></p>
-                </div>
-            </section>
-        </div>
-    </body>
-    </html>
+    </div>
+
+   
+</body>
+</html>
